@@ -9,14 +9,14 @@ from scipy.optimize import minimize, least_squares
 # M : Mach number
 
 def trapezoid_wing_points(c_r, c_m, b, phi):
-    x = array([0., 0., b/2., b/2.])
-    y = array([0., c_r, -b*tan(phi)/2.-c_m, -b*tan(phi)/2.])
+    x = array([0., 0., b/2., b/2., 0.])
+    y = array([0., c_r, -b*tan(phi)/2., -b*tan(phi)/2.-c_m, 0.])
     print([x, y])
     return array([x, y])
 
 def plot_trapezoid_wing(c_r, c_m, b, phi, ax):
     [x, y] = trapezoid_wing_points(c_r, c_m, b, phi)
-    return ax.scatter(x,y)
+    return ax.plot(x,y)
 
 def trapezoid_wing_surface(c_r, c_m, b):
     return (c_m+c_r)*b/2.
@@ -56,7 +56,7 @@ lift_grad_vector = zeros(m_range.size)
 fig, ax = subplots(1,1)
 for i,m in enumerate(m_range):
     def objective_max_lift_grad(x):
-        M=1.
+        M=3.
         return parametric_objective_max_lift_grad(x, M)
     x0 = array([.1,.29,.42,.29])
     [c_r, c_m, b, phi] = x0
