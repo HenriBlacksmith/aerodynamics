@@ -30,10 +30,10 @@ def trapezoid_wing_mid_chord_sweep(c_r, c_m, b, phi):
 def trapezoid_wing_subsonic_diedrich_lift_grad(c_r, c_m, b, phi, M):
     lam = trapezoid_wing_aspect_ratio(c_r, c_m, b)
     phi_half = trapezoid_wing_mid_chord_sweep(c_r, c_m, b, phi)
-    return pi*lam/(1+sqrt(1+(lam**2/4*cos(phi_half)**2)*(1-M**2*cos(phi)**2)))
+    return pi*lam/(1.+sqrt(1.+(lam**2./4.*cos(phi_half)**2)*(1.-M**2*cos(phi)**2)))
 
 def trapezoid_wing_supersonic_lift_grad(phi, M):
-     return 4/sqrt(M**2-1/cos(phi)**2)
+     return 4./sqrt(M**2-1./cos(phi)**2)
 
 def trapezoid_wing_lift_grad(c_r, c_m, b, phi, M):
     if(M<=1):
@@ -56,8 +56,7 @@ lift_grad_vector = zeros(m_range.size)
 fig, ax = subplots(1,1)
 for i,m in enumerate(m_range):
     def objective_max_lift_grad(x):
-        M=3.
-        return parametric_objective_max_lift_grad(x, M)
+        return parametric_objective_max_lift_grad(x, m)
     x0 = array([.1,.29,.42,.29])
     [c_r, c_m, b, phi] = x0
     plot_trapezoid_wing(c_r, c_m, b, phi, ax)
