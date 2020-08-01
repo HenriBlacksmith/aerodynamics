@@ -52,6 +52,10 @@ rc('text', usetex=True)
 xlabel('$theta$')
 ylabel('$\sigma$')
 title("$\sigma(theta)$")
-grid()
+ax.minorticks_on()
+# Major grid
+grid(which='major', linestyle='-', linewidth='0.5', color='black')
+# Minor grid
+grid(which='minor', linestyle=':', linewidth='0.5', color='black')
 savefig('polar.png', format='png')
 close('all')
