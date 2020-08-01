@@ -4,6 +4,7 @@ from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, savefig, cl
 ps = 1.0
 pi0 = 1.5
 
+# shape is the ratio A(x)/A_throat
 def shape(x):
     return 1 + 0.407*x**2*(3-2*x)
 
