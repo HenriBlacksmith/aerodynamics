@@ -1,5 +1,5 @@
 from numpy import arctan, cos, tan, sqrt, pi, array, linspace, zeros
-from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, savefig, bar, subplots, scatter
+from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, savefig, bar, subplots, scatter, close
 from scipy.optimize import minimize, least_squares
 
 # c_r : root chord
@@ -75,6 +75,7 @@ xlabel('$x$')
 ylabel('$y$')
 title('$Wings(M)$')
 savefig('geoms.png', format='png')
+close('all')
 
 plot(m_range, lift_grad_vector)
 rc('text', usetex=True)
@@ -82,3 +83,4 @@ xlabel('$M$')
 ylabel('$Cl_a$')
 title('$Cl_a(M)$')
 savefig('lift_grad_mach.png', format='png')
+close('all')
