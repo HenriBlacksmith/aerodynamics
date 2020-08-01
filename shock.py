@@ -79,6 +79,7 @@ print("C=" + str(C))
 print("D=" + str(D))
 print("E=" + str(E))
 print("Delta=" + str(Delta))
+print("_________________________________")
 
 if (Delta < 0):   
     Phi_strong = arccos(-E/(2.*D**(3./2.)))+4.*pi # Strong shock solution
@@ -104,7 +105,6 @@ if (Delta < 0):
     M1 = Mn1*sin(sigma-theta) # Mach number (post-shock)
     Cp1 =(p1_p0-1)/(gamma/2*M**2) # Pressure coefficient (post-shock)
 
-    print("_________________________________")
     print("Weak shock solution : ")
     print("Phi_weak=" + str(Phi_weak) + " rad")
     print("F_weak=" + str(F_weak))
@@ -127,14 +127,13 @@ if (Delta < 0):
     print("rho1_rho0=" + str(rho1_rho0))
     print("T1_T0=" + str(T1_T0))
     print("pi1_pi0=" + str(pi1_pi0))
-    print("=================================")
     fig, ax = subplots(1,1)
     plot_shock(theta, sigma_weak, M, M1, ax)
     
 else : 
-    print("_________________________________")
     print("No shock")
-    print("=================================")
+
+print("=================================")
 
 # Pre-shock ratios (Ideal homoentropic gas)
 # omega_bar0 = (1+(gamma-1)/2*M**2)**(-gamma/(gamma-1))
