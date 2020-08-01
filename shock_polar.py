@@ -1,5 +1,5 @@
 from numpy import degrees, radians, sin, tan, cos, pi, arccos, arctan, nan, linspace, zeros, array
-from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, savefig, close, subplots
+from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, savefig, close, subplots, grid
 
 def shock_polar_deg(theta_deg, M):
 
@@ -52,5 +52,6 @@ rc('text', usetex=True)
 xlabel('$theta$')
 ylabel('$\sigma$')
 title("$\sigma(theta)$")
+grid()
 savefig('polar.png', format='png')
 close('all')
