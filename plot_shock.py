@@ -23,7 +23,7 @@ def plot_data_table(data):
     ax.axis('off')
     ax.table(cellText=data, loc='center')
     title('Oblique shock data')
-    savefig('data.png', format='png')
+    savefig('images/data.png', format='png')
     close('all')
 
 def plot_shock(theta, sigma_weak, M, M1, ax):
@@ -59,5 +59,5 @@ def plot_shock(theta, sigma_weak, M, M1, ax):
     xlabel('$x$')
     ylabel('$y$')
     title('Oblique shock')
-    savefig('shock.png', format='png')
+    savefig('images/shock.png', format='png')
     close('all')

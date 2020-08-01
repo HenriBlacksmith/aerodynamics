@@ -49,13 +49,13 @@ for j, m in enumerate(m_vect):
     ax.plot(theta_vect, sigma_strong_vect, color='r')
 
 rc('text', usetex=True)
-xlabel('$theta$')
+xlabel('$\\theta$')
 ylabel('$\sigma$')
-title("$\sigma(theta)$")
+title("$\sigma_M(\\theta)$ - Shock polar")
 ax.minorticks_on()
 # Major grid
 grid(which='major', linestyle='-', linewidth='0.5', color='black')
 # Minor grid
 grid(which='minor', linestyle=':', linewidth='0.5', color='black')
-savefig('polar.png', format='png')
+savefig('images/polar.png', format='png')
 close('all')
