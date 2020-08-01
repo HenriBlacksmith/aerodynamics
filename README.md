@@ -1,2 +1,2 @@
 # aerodynamics
-Personal aerodynamics code ans research
+Personal aerodynamics code and research
