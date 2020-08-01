@@ -7,8 +7,8 @@ from scipy.optimize import newton
 
 # Inputs
 gamma = 1.4
-M = 1.2 # Mach number
-theta_deg = 40.
+M = 2. # Mach number
+theta_deg = 12.
 
 # Angles in radians
 theta = radians(theta_deg)
