@@ -1,4 +1,4 @@
-from numpy import arctan, cos, tan, sqrt, pi, array, linspace, zeros
+from numpy import arctan, cos, tan, sqrt, pi, array, linspace, zeros, inf
 from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, savefig, bar, subplots, scatter, close
 from scipy.optimize import minimize, least_squares
 
@@ -50,7 +50,7 @@ def parametric_objective_max_lift_grad(x, M):
 
 
 # Optimization (multipoint)
-m_range = linspace(0.1, 2., 10)
+m_range = linspace(0.1, 1.5, 200)
 lift_grad_vector = zeros(m_range.size)
 
 fig, ax = subplots(1,1)
@@ -60,7 +60,7 @@ for i,m in enumerate(m_range):
     x0 = array([.1,.29,.42,.29])
     [c_r, c_m, b, phi] = x0
     plot_trapezoid_wing(c_r, c_m, b, phi, ax)
-    res = least_squares(objective_max_lift_grad, x0)
+    res = least_squares(objective_max_lift_grad, x0, bounds=([1.e-2, 1.e-2, 1.e-2, 1.e-2], [inf, inf, inf, inf]))
     [c_r, c_m, b, phi] = res.x
     plot_trapezoid_wing(c_r, c_m, b, phi, ax)
     # print(res)
