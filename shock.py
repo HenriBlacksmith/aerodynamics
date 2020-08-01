@@ -1,5 +1,5 @@
 from numpy import radians, sin, tan, cos, pi, arccos, arctan, array
-from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, gca, savefig, subplots, close
+from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, gca, savefig, subplots, close, arrow, annotate
 
 # Plotting functions
 def wall_points(theta):
@@ -20,21 +20,28 @@ def strong_shock_wave_points(sigma_strong):
 def plot_shock(theta, sigma_weak, sigma_strong, ax):
     [wall_x, wall_y] = wall_points(theta)
     [weak_x, weak_y] = weak_shock_wave_points(sigma_weak)
-    [strong_x, strong_y] = strong_shock_wave_points(sigma_strong)
     ax.plot(wall_x, wall_y, 'r')
     ax.plot(weak_x, weak_y, 'b')
-    ax.plot(strong_x, strong_y, 'g')
+    ax.annotate("", 
+            xy=(-0.7, 0.3), 
+            xytext=(-1, 0.3), 
+            arrowprops=dict(arrowstyle="->"), 
+            horizontalalignment='left',
+            verticalalignment='bottom')
+    ax.annotate("M=" + str(M), 
+            xy=(-0.7, 0.35), 
+            xytext=(-1, 0.35))
     rc('text', usetex=True)
     gca().set_aspect('equal', adjustable='box')
     xlabel('$x$')
     ylabel('$y$')
-    title('$Oblique shock$')
+    title('Oblique shock')
     savefig('shock.png', format='png')
     close('all')
 
 # Inputs
 gamma = 1.4
-M = 1.1 # Mach number
+M = 3.1 # Mach number
 theta_deg = 28.53
 
 # Angles in radians
