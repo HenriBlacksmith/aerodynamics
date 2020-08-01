@@ -79,7 +79,7 @@ if (Delta < 0):
     plot_shock(theta, sigma_weak, M, M1, ax)
     
 else : 
-    print("No shock")
+    print("No attached shock")
 
 print("=================================")
 
