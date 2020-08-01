@@ -1,7 +1,7 @@
-from numpy import linspace, zeros, inf
+from numpy import linspace, zeros, inf, array, pi, radians
 from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, savefig, subplots, close
 from scipy.optimize import minimize, least_squares
-from aerodynamics import trapezoid_wing_lift_grad
+from aerodynamics import trapezoid_wing_lift_grad, plot_trapezoid_wing
 
 def parametric_objective_max_lift_grad(x, M):
     c_r =   x[0]
@@ -21,15 +21,15 @@ for i,m in enumerate(m_range):
     x0 = array([.1,.29,.42,.29])
     [c_r, c_m, b, phi] = x0
     plot_trapezoid_wing(c_r, c_m, b, phi, ax)
-    res = least_squares(objective_max_lift_grad, x0, bounds=([1.e-2, 1.e-2, 1.e-2, 1.e-2], [inf, inf, inf, inf]))
+    res = least_squares(objective_max_lift_grad, x0, bounds=([1.e-2, 1.e-2, 1.e-2, 0.], [50., 50., 50., radians(80.)]))
     [c_r, c_m, b, phi] = res.x
     plot_trapezoid_wing(c_r, c_m, b, phi, ax)
-    # print(res)
     if res.success == True:
         lift_grad_vector[i] = res.fun
     else :
         lift_grad_vector[i] = float('nan')
 
+# Plots
 rc('text', usetex=True)
 xlabel('$x$')
 ylabel('$y$')
