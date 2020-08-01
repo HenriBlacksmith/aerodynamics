@@ -1,5 +1,5 @@
 from numpy import tan, array
-from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, gca, savefig, subplots, close, arrow, annotate
+from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, gca, savefig, subplots, close, arrow, annotate, table
 
 # Plotting functions
 def wall_points(theta):
@@ -16,6 +16,15 @@ def strong_shock_wave_points(sigma_strong):
     x = array([0., 1.])
     y = array([0., tan(sigma_strong)])
     return array([x,y])
+
+def plot_data_table(data):
+    fig, ax = subplots(1,1)
+    rc('text', usetex=True)
+    ax.axis('off')
+    ax.table(cellText=data, loc='center')
+    title('Oblique shock data')
+    savefig('data.png', format='png')
+    close('all')
 
 def plot_shock(theta, sigma_weak, M, M1, ax):
     [wall_x, wall_y] = wall_points(theta)
