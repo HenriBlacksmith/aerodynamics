@@ -5,8 +5,11 @@ ps = 1.0
 pi0 = 1.5
 
 # shape is the ratio A(x)/A_throat
-def shape(x):
+def divergent_shape(x):
     return 1 + 0.407*x**2*(3-2*x)
+
+def convergent_shape(x):
+    return 1 - 0.5*x
 
 # Situations occuring while increasing pi0
 # A - No Shock (one sonic section)
@@ -17,10 +20,14 @@ def shape(x):
 
 def plot_nozzle():
     fig, ax = subplots(1,1)
-    geom_x = linspace(0., 1., 100)
-    geom_y = shape(geom_x)
-    ax.plot(geom_x, geom_y, 'r')
-    ax.plot(geom_x, -geom_y, 'r')
+    divergent_geom_x = linspace(0., 1., 100)
+    divergent_geom_y = divergent_shape(divergent_geom_x)
+    ax.plot(divergent_geom_x, divergent_geom_y, 'r')
+    ax.plot(divergent_geom_x, -divergent_geom_y, 'r')
+    convergent_geom_x = linspace(-2., 0., 100)
+    convergent_geom_y = convergent_shape(convergent_geom_x)
+    ax.plot(convergent_geom_x, convergent_geom_y, 'r')
+    ax.plot(convergent_geom_x, -convergent_geom_y, 'r')
     rc('text', usetex=True)
     gca().set_aspect('equal', adjustable='box')
     xlabel('$x$')
