@@ -1,11 +1,19 @@
 from numpy import arctan, tan, array, linspace, sqrt, zeros, degrees
 from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, gca, savefig, subplots, close, arrow, annotate, table, grid
+from scipy.optimize import newton
 
 def prandtl_meyer_deg(M, gamma):
     return degrees(sqrt((gamma+1)/(gamma-1))*arctan(sqrt((gamma-1)/(gamma+1))*(M**2-1)) - arctan(M**2-1))
 
 def prandtl_meyer(M, gamma):
     return sqrt((gamma+1)/(gamma-1))*arctan(sqrt((gamma-1)/(gamma+1))*(M**2-1)) - arctan(M**2-1)
+
+def inverse_prandtl_meyer(nu_val):
+    def objective(x):
+        return prandtl_meyer(x, gamma)-nu_val
+    res = newton(objective, 1.5)
+    print(res)
+    return res
 
 # Plotting functions
 def wall_points(theta):
@@ -84,3 +92,4 @@ def plot_prandtl_meyer(ax):
     grid(which='minor', linestyle=':', linewidth='0.5', color='black')
     savefig('images/prandtl_meyer.png', format='png')
     close('all')
+

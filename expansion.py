@@ -2,8 +2,7 @@
 
 from numpy import arcsin, radians, sqrt
 from matplotlib.pyplot import subplots
-from plot_expansion import plot_expansion, plot_prandtl_meyer, prandtl_meyer
-from scipy.optimize import newton
+from plot_expansion import plot_expansion, plot_prandtl_meyer, prandtl_meyer, inverse_prandtl_meyer
 
 # Inputs
 gamma = 1.4
@@ -19,13 +18,6 @@ nu1 = theta + prandtl_meyer(M, gamma)
 print("nu1=" + str(nu1))
 
 mu = arcsin(1./M)
-
-def inverse_prandtl_meyer(nu_val):
-    def objective(x):
-        return prandtl_meyer(x, gamma)-nu_val
-    res = newton(objective, 1.5)
-    print(res)
-    return res
 
 M1=inverse_prandtl_meyer(nu1)
 mu1 = arcsin(1./M1)
