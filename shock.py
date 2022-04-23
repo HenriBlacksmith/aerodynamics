@@ -1,6 +1,8 @@
-from numpy import degrees, radians, sin, tan, cos, pi, arccos, arctan
 from matplotlib.pyplot import subplots
-from plot_shock import plot_shock, plot_data_table
+from numpy import arccos, arctan, cos, degrees, pi, radians, sin, tan
+
+from plot_shock import plot_data_table, plot_shock
+
 # Inputs
 gamma = 1.4
 M = 3.1 # Mach number

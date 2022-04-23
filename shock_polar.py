@@ -1,5 +1,8 @@
-from numpy import degrees, radians, sin, tan, cos, pi, arccos, arctan, nan, linspace, zeros, array
-from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, savefig, close, subplots, grid
+from matplotlib.pyplot import (close, grid, plot, rc, savefig, show, subplots,
+                               title, xlabel, ylabel)
+from numpy import (arccos, arctan, array, cos, degrees, linspace, nan, pi,
+                   radians, sin, tan, zeros)
+
 
 def shock_polar_deg(theta_deg, M):
 

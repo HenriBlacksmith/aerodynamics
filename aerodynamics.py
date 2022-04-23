@@ -1,5 +1,5 @@
-from numpy import arctan, cos, tan, sqrt, pi, array, degrees
-from matplotlib.pyplot import plot 
+from matplotlib.pyplot import plot
+from numpy import arctan, array, cos, degrees, pi, sqrt, tan
 
 # c_r : root chord
 # c_m

@@ -1,8 +1,10 @@
 # Prandtl-Meyer expansion fan
 
-from numpy import arcsin, radians, sqrt
 from matplotlib.pyplot import subplots
-from plot_expansion import plot_expansion, plot_prandtl_meyer, prandtl_meyer, inverse_prandtl_meyer
+from numpy import arcsin, radians, sqrt
+
+from plot_expansion import (inverse_prandtl_meyer, plot_expansion,
+                            plot_prandtl_meyer, prandtl_meyer)
 
 # Inputs
 gamma = 1.4

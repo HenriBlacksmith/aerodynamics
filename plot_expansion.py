@@ -1,6 +1,9 @@
-from numpy import arctan, tan, array, linspace, sqrt, zeros, degrees
-from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, gca, savefig, subplots, close, arrow, annotate, table, grid
+from matplotlib.pyplot import (annotate, arrow, close, gca, grid, plot, rc,
+                               savefig, show, subplots, table, title, xlabel,
+                               ylabel)
+from numpy import arctan, array, degrees, linspace, sqrt, tan, zeros
 from scipy.optimize import newton
+
 
 def prandtl_meyer_deg(M, gamma):
     return degrees(sqrt((gamma+1)/(gamma-1))*arctan(sqrt((gamma-1)/(gamma+1))*(M**2-1)) - arctan(M**2-1))

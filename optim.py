@@ -1,7 +1,10 @@
-from numpy import linspace, zeros, inf, array, pi, radians
-from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, savefig, subplots, close
-from scipy.optimize import minimize, least_squares
-from aerodynamics import trapezoid_wing_lift_grad, plot_trapezoid_wing
+from matplotlib.pyplot import (close, plot, rc, savefig, show, subplots, title,
+                               xlabel, ylabel)
+from numpy import array, inf, linspace, pi, radians, zeros
+from scipy.optimize import least_squares, minimize
+
+from aerodynamics import plot_trapezoid_wing, trapezoid_wing_lift_grad
+
 
 def parametric_objective_max_lift_grad(x, M):
     c_r =   x[0]

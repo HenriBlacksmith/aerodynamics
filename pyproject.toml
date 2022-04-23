@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=40.8.0", "wheel"]
+build-backend = "setuptools.build_meta:__legacy__"
+
+[project]
+name = "aerodynamics"
+version = "0.0.1"
+description = "Personal aerodynamics code and research"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+  "Framework :: Matplotlib",
+  "Programming Language :: Python",
+  "Topic :: Scientific/Engineering"
+]
+dependencies = [
+  "matplotlib==3.5.1",
+  "numpy==1.22.3",
+  "scipy==1.8.0"
+]

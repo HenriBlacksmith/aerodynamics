@@ -1,5 +1,7 @@
-from numpy import tan, array
-from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, gca, savefig, subplots, close, arrow, annotate, table
+from matplotlib.pyplot import (annotate, arrow, close, gca, plot, rc, savefig,
+                               show, subplots, table, title, xlabel, ylabel)
+from numpy import array, tan
+
 
 # Plotting functions
 def wall_points(theta):

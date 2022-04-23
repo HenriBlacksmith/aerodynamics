@@ -1,5 +1,6 @@
+from matplotlib.pyplot import (close, gca, grid, plot, rc, savefig, show,
+                               subplots, title, xlabel, ylabel)
 from numpy import linspace
-from matplotlib.pyplot import plot, xlabel, ylabel, title, show, rc, savefig, close, subplots, grid, gca
 
 ps = 1.0
 pi0 = 1.5

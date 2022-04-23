@@ -1,4 +1,5 @@
-from gas_dynamics import sound_velocity, mach_angle, mayer_cv, mayer_cp, Theta, omega_bar, R, Sigma
+from gas_dynamics import (R, Sigma, Theta, mach_angle, mayer_cp, mayer_cv,
+                          omega_bar, sound_velocity)
 
 # Inputs
 M = 1.2
