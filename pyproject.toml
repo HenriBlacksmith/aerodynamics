@@ -37,15 +37,15 @@ legacy_tox_ini = """
 envlist = pylint, isort
 isolated_build = True
 
-[testenv:pylint]
-basepython=python3
+[testenv:mypy]
+basepython = python3.10
 deps =
-    pylint
+    mypy
 commands =
-    pylint src
+    mypy src
 
 [testenv:isort]
-basepython=python3
+basepython = python3.10
 deps =
     isort
 commands =
