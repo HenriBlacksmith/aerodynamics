@@ -17,17 +17,17 @@ theta = radians(THETA_DEG)
 # Mach lines
 
 nu1 = theta + prandtl_meyer(M, GAMMA)
-print("nu1=" + str(nu1))
+print(f"nu1={str(nu1)}")
 
 mu = arcsin(1.0 / M)
 
 M1 = inverse_prandtl_meyer(nu1, GAMMA)
 mu1 = arcsin(1.0 / M1)
-print("M1=" + str(M1))
-print("mu1=" + str(mu1))
+print(f"M1={str(M1)}\nmu1={str(mu1)}")
+
 # After the expansion
-fig, ax = subplots(1, 1)
+_, ax = subplots(1, 1)
 plot_expansion(theta, mu, mu1, M, M1, ax)
 
-fig, ax = subplots(1, 1)
+_, ax = subplots(1, 1)
 plot_prandtl_meyer(ax)
