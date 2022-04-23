@@ -1,6 +1,5 @@
 from matplotlib.pyplot import subplots
 from numpy import arccos, arctan, cos, degrees, pi, radians, sin, tan
-
 from plot_shock import plot_data_table, plot_shock
 
 # Inputs

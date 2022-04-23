@@ -2,7 +2,6 @@
 
 from matplotlib.pyplot import subplots
 from numpy import arcsin, radians
-
 from plot_expansion import (inverse_prandtl_meyer, plot_expansion,
                             plot_prandtl_meyer, prandtl_meyer)
 
