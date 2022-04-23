@@ -26,3 +26,6 @@ src_paths = ["."]
 [tool.mypy]
 python_version = "3.10"
 ignore_missing_imports = true
+
+[tool.pylint.format]
+max-line-length = 120

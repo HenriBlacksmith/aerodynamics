@@ -8,6 +8,7 @@ from numpy import arctan, array, cos, degrees, ndarray, pi, sqrt, tan
 
 
 class TrapezoidWing(object):
+    """Object representing a trapezoid wing"""
     def __init__(self, c_r, c_m, b, phi) -> None:
         self.c_r = c_r
         self.c_m = c_m
