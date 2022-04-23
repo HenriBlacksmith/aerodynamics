@@ -32,7 +32,10 @@ isolated_build = True
 
 [testenv:py310]
 basepython=python3
-
+deps =
+    pylint
+commands =
+    pylint src
 """
 
 [tool.setuptools]
