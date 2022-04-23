@@ -9,6 +9,7 @@ K_BOLTZMANN = 1.38064852e-23  # J/K
 R = K_BOLTZMANN * N_AVOGADRO  # J/K/mol
 r = R / M_AIR  # J/K/kg
 
+
 # Mayer relations
 def mayer_cp(gamma):
     return r * gamma / (gamma - 1)  # J/K/kg

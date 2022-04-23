@@ -5,6 +5,7 @@ from numpy import linspace
 ps = 1.0
 pi0 = 1.5
 
+
 # shape is the ratio A(x)/A_throat
 def divergent_shape(x):
     return 1 + 0.407 * x**2 * (3 - 2 * x)
