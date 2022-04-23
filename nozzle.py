@@ -24,7 +24,7 @@ def convergent_shape(x):
 
 
 def plot_nozzle():
-    fig, ax = subplots(1, 1)
+    _, ax = subplots(1, 1)
     divergent_geom_x = linspace(0.0, 1.0, 100)
     divergent_geom_y = divergent_shape(divergent_geom_x)
     ax.plot(divergent_geom_x, divergent_geom_y, "r")
