@@ -64,5 +64,4 @@ def trapezoid_wing_supersonic_lift_grad(c_r, c_m, b, phi, M):
 def trapezoid_wing_lift_grad(c_r, c_m, b, phi, M):
     if M <= 1:
         return trapezoid_wing_subsonic_diedrich_lift_grad(c_r, c_m, b, phi, M)
-    else:
-        return trapezoid_wing_supersonic_lift_grad(c_r, c_m, b, phi, M)
+    return trapezoid_wing_supersonic_lift_grad(c_r, c_m, b, phi, M)

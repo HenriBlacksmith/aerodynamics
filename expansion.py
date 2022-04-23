@@ -7,21 +7,21 @@ from plot_expansion import (inverse_prandtl_meyer, plot_expansion,
                             plot_prandtl_meyer, prandtl_meyer)
 
 # Inputs
-gamma = 1.4
+GAMMA = 1.4
 M = 2.0  # Mach number
-theta_deg = 12.0
+THETA_DEG = 12.0
 
 # Angles in radians
-theta = radians(theta_deg)
+theta = radians(THETA_DEG)
 
 # Mach lines
 
-nu1 = theta + prandtl_meyer(M, gamma)
+nu1 = theta + prandtl_meyer(M, GAMMA)
 print("nu1=" + str(nu1))
 
 mu = arcsin(1.0 / M)
 
-M1 = inverse_prandtl_meyer(nu1, gamma)
+M1 = inverse_prandtl_meyer(nu1, GAMMA)
 mu1 = arcsin(1.0 / M1)
 print("M1=" + str(M1))
 print("mu1=" + str(mu1))
