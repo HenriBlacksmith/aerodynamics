@@ -34,7 +34,7 @@ tests = [
 [tool.tox]
 legacy_tox_ini = """
 [tox]
-envlist = pylint, isort
+envlist = mypy, isort
 isolated_build = True
 
 [testenv:mypy]
