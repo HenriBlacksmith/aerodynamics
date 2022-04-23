@@ -24,18 +24,32 @@ dependencies = [
   "scipy==1.8.0"
 ]
 
+[project.optional-dependencies]
+tests = [
+  'pylint',
+  'isort',
+  'mypy'
+]
+
 [tool.tox]
 legacy_tox_ini = """
 [tox]
-envlist = py310
+envlist = pylint, isort
 isolated_build = True
 
-[testenv:py310]
+[testenv:pylint]
 basepython=python3
 deps =
     pylint
 commands =
     pylint src
+
+[testenv:isort]
+basepython=python3
+deps =
+    isort
+commands =
+    isort src/aerodynamics
 """
 
 [tool.setuptools]
