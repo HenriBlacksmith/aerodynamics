@@ -1,16 +1,21 @@
 [build-system]
-requires = ["setuptools>=40.8.0", "wheel"]
-build-backend = "setuptools.build_meta:__legacy__"
+requires = ["setuptools>=62.1.0"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "aerodynamics"
 version = "0.0.1"
+maintainers = [
+  {name = "Henri Lefevre", email = "henrilefevre.public@gmail.com"}
+]
+keywords = ["aerodynamics"]
 description = "Personal aerodynamics code and research"
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [
   "Framework :: Matplotlib",
   "Programming Language :: Python",
+  "Programming Language :: Python :: 3.10",
   "Topic :: Scientific/Engineering"
 ]
 dependencies = [
@@ -19,8 +24,23 @@ dependencies = [
   "scipy==1.8.0"
 ]
 
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist = py310
+isolated_build = True
+
+[testenv:py310]
+basepython=python3
+
+"""
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["aerodynamics"]
+
 [tool.isort]
-py_version=310
+py_version = 310
 src_paths = ["."]
 
 [tool.mypy]
