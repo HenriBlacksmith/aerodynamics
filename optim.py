@@ -3,7 +3,7 @@ from matplotlib.pyplot import (close, plot, rc, savefig, subplots, title,
 from numpy import array, linspace, radians, zeros
 from scipy.optimize import least_squares
 
-from aerodynamics import plot_trapezoid_wing, trapezoid_wing_lift_grad
+from aerodynamics import TrapezoidWing
 
 
 def parametric_objective_max_lift_grad(x, M):
@@ -11,7 +11,7 @@ def parametric_objective_max_lift_grad(x, M):
     c_m = x[1]
     b = x[2]
     phi = x[3]
-    return -trapezoid_wing_lift_grad(c_r, c_m, b, phi, M)
+    return -TrapezoidWing(c_r, c_m, b, phi).lift_grad(M)
 
 
 # Optimization (multipoint)
@@ -26,14 +26,14 @@ for i, m in enumerate(m_range):
 
     x0 = array([0.1, 0.29, 0.42, 0.29])
     [c_r, c_m, b, phi] = x0
-    plot_trapezoid_wing(c_r, c_m, b, phi, ax)
+    TrapezoidWing(c_r, c_m, b, phi).plot(ax)
     res = least_squares(
         objective_max_lift_grad,
         x0,
         bounds=([1.0e-2, 1.0e-2, 1.0e-2, 0.0], [50.0, 50.0, 50.0, radians(80.0)]),
     )
     [c_r, c_m, b, phi] = res.x
-    plot_trapezoid_wing(c_r, c_m, b, phi, ax)
+    TrapezoidWing(c_r, c_m, b, phi).plot(ax)
     if res.success:
         lift_grad_vector[i] = res.fun
     else:

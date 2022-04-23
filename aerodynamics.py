@@ -1,4 +1,4 @@
-from numpy import arctan, array, cos, degrees, pi, sqrt, tan
+from numpy import arctan, array, cos, degrees, ndarray, pi, sqrt, tan
 
 # c_r : root chord
 # c_m
@@ -7,61 +7,61 @@ from numpy import arctan, array, cos, degrees, pi, sqrt, tan
 # M : Mach number
 
 
-def trapezoid_wing_points(c_r, c_m, b, phi):
-    x = array([0.0, 0.0, b / 2.0, b / 2.0, 0.0])
-    y = array([0.0, c_r, -b * tan(phi) / 2.0, -b * tan(phi) / 2.0 - c_m, 0.0])
-    return array([x, y])
+class TrapezoidWing(object):
+    def __init__(self, c_r, c_m, b, phi) -> None:
+        self.c_r = c_r
+        self.c_m = c_m
+        self.b = b
+        self.phi = phi
 
-
-def plot_trapezoid_wing(c_r, c_m, b, phi, ax):
-    [x, y] = trapezoid_wing_points(c_r, c_m, b, phi)
-    return ax.plot(x, y)
-
-
-def trapezoid_wing_surface(c_r, c_m, b):
-    return (c_m + c_r) * b / 2.0
-
-
-def trapezoid_wing_aspect_ratio(c_r, c_m, b):
-    return 2.0 * b / (c_m + c_r)
-
-
-def trapezoid_wing_mid_chord_sweep(c_r, c_m, b, phi):
-    return arctan(tan(phi) + (c_m - c_r) / b)
-
-
-def trapezoid_wing_subsonic_diedrich_lift_grad(c_r, c_m, b, phi, M):
-    lam = trapezoid_wing_aspect_ratio(c_r, c_m, b)  # Aspect ratio
-    phi_half = trapezoid_wing_mid_chord_sweep(c_r, c_m, b, phi)  # Mid-chord sweep
-    Mn = M * cos(phi)  # Normal Mach
-    return (
-        pi
-        * lam
-        / (1.0 + sqrt(1.0 + (sqrt(1 - Mn**2) * lam / (2 * cos(phi_half))) ** 2))
-        * trapezoid_wing_surface(c_r, c_m, b)
-    )
-
-
-def trapezoid_wing_supersonic_lift_grad(c_r, c_m, b, phi, M):
-    if M**2 - 1.0 / cos(phi) ** 2 < 0.0:
-        print(
-            "M**2-1./cos(phi)**2 = "
-            + str(M**2 - 1.0 / cos(phi) ** 2)
-            + " M="
-            + str(M)
-            + " phi (deg)="
-            + str(degrees(phi))
-            + " cos(phi)= "
-            + str(cos(phi))
+    def wing_points(self) -> ndarray:
+        x = array([0.0, 0.0, self.b / 2.0, self.b / 2.0, 0.0])
+        y = array(
+            [
+                0.0,
+                self.c_r,
+                -self.b * tan(self.phi) / 2.0,
+                -self.b * tan(self.phi) / 2.0 - self.c_m,
+                0.0,
+            ]
         )
-    return (
-        4.0
-        / sqrt(abs(M**2 - 1.0 / cos(phi) ** 2))
-        * trapezoid_wing_surface(c_r, c_m, b)
-    )
+        return array([x, y])
 
+    def plot(self, ax):
+        [x, y] = self.wing_points()
+        return ax.plot(x, y)
 
-def trapezoid_wing_lift_grad(c_r, c_m, b, phi, M):
-    if M <= 1:
-        return trapezoid_wing_subsonic_diedrich_lift_grad(c_r, c_m, b, phi, M)
-    return trapezoid_wing_supersonic_lift_grad(c_r, c_m, b, phi, M)
+    def surface(self):
+        return (self.c_m + self.c_r) * self.b / 2.0
+
+    def aspect_ratio(self):
+        return 2.0 * self.b / (self.c_m + self.c_r)
+
+    def mid_chord_sweep(self):
+        return arctan(tan(self.phi) + (self.c_m - self.c_r) / self.b)
+
+    def subsonic_diedrich_lift_grad(self, M):
+        lam = self.aspect_ratio()  # Aspect ratio
+        phi_half = self.mid_chord_sweep()  # Mid-chord sweep
+        Mn = M * cos(self.phi)  # Normal Mach
+        return (
+            pi
+            * lam
+            / (1.0 + sqrt(1.0 + (sqrt(1 - Mn**2) * lam / (2 * cos(phi_half))) ** 2))
+            * self.surface()
+        )
+
+    def supersonic_lift_grad(self, M):
+        if M**2 - 1.0 / cos(self.phi) ** 2 < 0.0:
+            print(
+                f"M**2-1./cos(phi)**2 = {str(M**2 - 1.0 / cos(self.phi) ** 2)}"
+                + f" M={str(M)}"
+                + f" phi (deg)={str(degrees(self.phi))}"
+                + f" cos(phi)= {str(cos(self.phi))}"
+            )
+        return 4.0 / sqrt(abs(M**2 - 1.0 / cos(self.phi) ** 2)) * self.surface()
+
+    def lift_grad(self, M):
+        if M <= 1:
+            return self.subsonic_diedrich_lift_grad(M)
+        return self.supersonic_lift_grad(M)
