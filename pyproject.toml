@@ -25,39 +25,45 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-tests = [
-  'pylint',
-  'isort',
-  'mypy'
+dev = [
+  "pylint==2.13.9",
+  "isort==5.10.1",
+  "mypy==0.950",
+  "black==22.3.0"
 ]
 
 [tool.tox]
 legacy_tox_ini = """
 [tox]
-envlist = mypy, isort
+envlist = lint
 isolated_build = True
+minversion = 3.25.0
+requires = tox_venv >= 1.0.0
 
-[testenv:mypy]
+[testenv:lint]
 basepython = python3.10
 deps =
     mypy
+    isort
+    black
+    pylint
 commands =
     mypy src
-
-[testenv:isort]
-basepython = python3.10
-deps =
-    isort
-commands =
-    isort src/aerodynamics
+    isort --check-only src/aerodynamics
+    black --check .
+    pylint src
 """
 
 [tool.setuptools]
 package-dir = {"" = "src"}
 packages = ["aerodynamics"]
 
+[tool.black]
+line-length = 120
+target-version = ["py310"]
+
 [tool.isort]
-py_version = 310
+profile = "black"
 src_paths = ["."]
 
 [tool.mypy]
@@ -67,7 +73,12 @@ ignore_missing_imports = true
 [tool.pylint.format]
 max-line-length = 120
 disable = [
+  "cell-var-from-loop",
+  "duplicate-code",
   "invalid-name",
   "missing-function-docstring",
-  "missing-module-docstring"
+  "missing-module-docstring",
+  "redefined-outer-name",
+  "too-many-arguments",
+  "too-many-locals"
 ]

@@ -1,6 +1,7 @@
 from matplotlib.pyplot import subplots
 from numpy import arccos, arctan, cos, degrees, pi, radians, sin, tan
-from plot_shock import plot_data_table, plot_shock
+
+from aerodynamics.plot_shock import plot_data_table, plot_shock
 
 # Inputs
 gamma = 1.4
@@ -22,9 +23,7 @@ Delta = E**2 - 4 * D**3
 print("=================================")
 
 if Delta < 0:
-    Phi_strong = (
-        arccos(-E / (2.0 * D ** (3.0 / 2.0))) + 4.0 * pi
-    )  # Strong shock solution
+    Phi_strong = arccos(-E / (2.0 * D ** (3.0 / 2.0))) + 4.0 * pi  # Strong shock solution
     Phi_weak = arccos(-E / (2.0 * D ** (3.0 / 2.0)))  # Weak shock solution
 
     F_weak = 2.0 * D ** (1.0 / 2.0) * cos(Phi_weak / 3.0) - A / 3.0
@@ -44,24 +43,21 @@ if Delta < 0:
     pi1_pi0 = p1_p0 ** (-1 / (gamma - 1)) * rho1_rho0 ** (gamma / (gamma - 1))
 
     # Post-shock values
-    Mn1 = (
-        (1.0 + (gamma - 1.0) / 2.0 * Mn0**2.0)
-        / (gamma * Mn0**2.0 - (gamma - 1.0) / 2.0)
-    ) ** (
+    Mn1 = ((1.0 + (gamma - 1.0) / 2.0 * Mn0**2.0) / (gamma * Mn0**2.0 - (gamma - 1.0) / 2.0)) ** (
         1.0 / 2.0
     )  # Normal Mach number (post-shock)
     M1 = Mn1 * sin(sigma - theta)  # Mach number (post-shock)
     Cp1 = (p1_p0 - 1) / (gamma / 2 * M**2)  # Pressure coefficient (post-shock)
 
     print("Weak shock solution : ")
-    print("Phi_weak=" + str(Phi_weak) + " rad")
-    print("F_weak=" + str(F_weak))
-    print("sigma_weak=" + str(sigma_weak) + " rad")
+    print(f"Phi_weak={Phi_weak} rad")
+    print(f"F_weak={F_weak}")
+    print(f"sigma_weak={sigma_weak} rad")
     print("_________________________________")
     print("Strong shock solution : ")
-    print("Phi_strong=" + str(Phi_strong) + " rad")
-    print("F_strong=" + str(F_strong))
-    print("sigma_strong=" + str(sigma_strong) + " rad")
+    print(f"Phi_strong={Phi_strong} rad")
+    print(f"F_strong={F_strong}")
+    print(f"sigma_strong={sigma_strong} rad")
     print("_________________________________")
     print("Weak shock solution is chosen as physical solution")
     fig, ax = subplots(1, 1)
@@ -79,13 +75,13 @@ table_data = [
     ["$C$", str(round(C, 5))],
     ["$D$", str(round(D, 5))],
     ["$E$", str(round(E, 5))],
-    ["$\Delta$", str(round(Delta, 5))],
+    ["$\\Delta$", str(round(Delta, 5))],
     ["$Mn_0$", str(round(Mn0, 5))],
     ["$Mn_1$", str(round(Mn1, 5))],
     ["$M_0$", str(round(M, 5))],
     ["$M_1$", str(round(M1, 5))],
     ["$Cp_1$", str(round(Cp1, 5))],
-    ["$\sigma$", str(round(sigma_deg, 5)) + " deg = " + str(round(sigma, 5)) + " rad"],
+    ["$\\sigma$", str(round(sigma_deg, 5)) + " deg = " + str(round(sigma, 5)) + " rad"],
     ["$p_1/p_0$", str(round(p1_p0, 5))],
     ["$T_1/T_0$", str(round(T1_T0, 5))],
     ["$pi_1/pi_0$", str(round(pi1_pi0, 5))],

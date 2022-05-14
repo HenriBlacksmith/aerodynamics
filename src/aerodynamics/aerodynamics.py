@@ -7,8 +7,9 @@ from numpy import arctan, array, cos, degrees, ndarray, pi, sqrt, tan
 # M : Mach number
 
 
-class TrapezoidWing(object):
+class TrapezoidWing:
     """Object representing a trapezoid wing"""
+
     def __init__(self, c_r, c_m, b, phi) -> None:
         self.c_r = c_r
         self.c_m = c_m
@@ -45,12 +46,7 @@ class TrapezoidWing(object):
         lam = self.aspect_ratio()  # Aspect ratio
         phi_half = self.mid_chord_sweep()  # Mid-chord sweep
         Mn = M * cos(self.phi)  # Normal Mach
-        return (
-            pi
-            * lam
-            / (1.0 + sqrt(1.0 + (sqrt(1 - Mn**2) * lam / (2 * cos(phi_half))) ** 2))
-            * self.surface()
-        )
+        return pi * lam / (1.0 + sqrt(1.0 + (sqrt(1 - Mn**2) * lam / (2 * cos(phi_half))) ** 2)) * self.surface()
 
     def supersonic_lift_grad(self, M):
         if M**2 - 1.0 / cos(self.phi) ** 2 < 0.0:

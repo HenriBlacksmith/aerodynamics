@@ -1,5 +1,13 @@
-from gas_dynamics import (R_, Sigma, Theta, mach_angle, mayer_cp, mayer_cv,
-                          omega_bar, sound_velocity)
+from aerodynamics.gas_dynamics import (
+    R_,
+    Sigma,
+    Theta,
+    mach_angle,
+    mayer_cp,
+    mayer_cv,
+    omega_bar,
+    sound_velocity,
+)
 
 # Inputs
 M = 1.2

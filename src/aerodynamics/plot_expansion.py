@@ -1,21 +1,26 @@
-from matplotlib.pyplot import (close, gca, grid, rc, savefig, subplots, title,
-                               xlabel, ylabel)
+from matplotlib.pyplot import (
+    close,
+    gca,
+    grid,
+    rc,
+    savefig,
+    subplots,
+    title,
+    xlabel,
+    ylabel,
+)
 from numpy import arctan, array, degrees, linspace, sqrt, tan, zeros
 from scipy.optimize import newton
 
 
 def prandtl_meyer_deg(M, gamma):
     return degrees(
-        sqrt((gamma + 1) / (gamma - 1))
-        * arctan(sqrt((gamma - 1) / (gamma + 1)) * (M**2 - 1))
-        - arctan(M**2 - 1)
+        sqrt((gamma + 1) / (gamma - 1)) * arctan(sqrt((gamma - 1) / (gamma + 1)) * (M**2 - 1)) - arctan(M**2 - 1)
     )
 
 
 def prandtl_meyer(M, gamma):
-    return sqrt((gamma + 1) / (gamma - 1)) * arctan(
-        sqrt((gamma - 1) / (gamma + 1)) * (M**2 - 1)
-    ) - arctan(M**2 - 1)
+    return sqrt((gamma + 1) / (gamma - 1)) * arctan(sqrt((gamma - 1) / (gamma + 1)) * (M**2 - 1)) - arctan(M**2 - 1)
 
 
 def inverse_prandtl_meyer(nu_val, gamma):
@@ -47,7 +52,7 @@ def last_expansion_wave_points(mu1):
 
 
 def plot_data_table(data):
-    fig, ax = subplots(1, 1)
+    _, ax = subplots(1, 1)
     rc("text", usetex=True)
     ax.axis("off")
     ax.table(cellText=data, loc="center")
@@ -104,7 +109,7 @@ def plot_prandtl_meyer(ax):
     ax.plot(m_vect, nu_vect)
     rc("text", usetex=True)
     xlabel("$M$")
-    ylabel("$\\nu (^{\circ})$")
+    ylabel("$\\nu (^{\\circ})$")
     title("$\\nu(M)$ - Prandtl-Meyer function in degrees")
     ax.minorticks_on()
     # Major grid

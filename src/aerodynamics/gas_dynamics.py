@@ -42,9 +42,7 @@ def R_(gamma, M):
 
 
 def Sigma(gamma, M):
-    return (2.0 * Theta(gamma, M) / (gamma + 1.0)) ** -(
-        (gamma + 1.0) / (2.0 * (gamma - 1.0))
-    ) / M
+    return (2.0 * Theta(gamma, M) / (gamma + 1.0)) ** -((gamma + 1.0) / (2.0 * (gamma - 1.0))) / M
 
 
 def phi(gamma, M):

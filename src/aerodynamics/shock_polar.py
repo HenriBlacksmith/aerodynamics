@@ -1,7 +1,17 @@
-from matplotlib.pyplot import (close, grid, rc, savefig, subplots, title,
-                               xlabel, ylabel)
-from numpy import (arccos, arctan, array, cos, degrees, linspace, nan, pi,
-                   radians, tan, zeros)
+from matplotlib.pyplot import close, grid, rc, savefig, subplots, title, xlabel, ylabel
+from numpy import (
+    arccos,
+    arctan,
+    array,
+    cos,
+    degrees,
+    linspace,
+    nan,
+    pi,
+    radians,
+    tan,
+    zeros,
+)
 
 
 def shock_polar_deg(theta_deg, M):
@@ -21,9 +31,7 @@ def shock_polar_deg(theta_deg, M):
     Delta = E**2 - 4 * D**3
 
     if Delta < 0:
-        Phi_strong = (
-            arccos(-E / (2.0 * D ** (3.0 / 2.0))) + 4.0 * pi
-        )  # Strong shock solution
+        Phi_strong = arccos(-E / (2.0 * D ** (3.0 / 2.0))) + 4.0 * pi  # Strong shock solution
         Phi_weak = arccos(-E / (2.0 * D ** (3.0 / 2.0)))  # Weak shock solution
 
         F_weak = 2.0 * D ** (1.0 / 2.0) * cos(Phi_weak / 3.0) - A / 3.0
@@ -56,8 +64,8 @@ for j, m in enumerate(m_vect):
 
 rc("text", usetex=True)
 xlabel("$\\theta$")
-ylabel("$\sigma$")
-title("$\sigma_M(\\theta)$ - Shock polar")
+ylabel("$\\sigma$")
+title("$\\sigma_M(\\theta)$ - Shock polar")
 ax.minorticks_on()
 # Major grid
 grid(which="major", linestyle="-", linewidth="0.5", color="black")

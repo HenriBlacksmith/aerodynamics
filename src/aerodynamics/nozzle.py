@@ -1,5 +1,4 @@
-from matplotlib.pyplot import (close, gca, rc, savefig, subplots, title,
-                               xlabel, ylabel)
+from matplotlib.pyplot import close, gca, rc, savefig, subplots, title, xlabel, ylabel
 from numpy import linspace
 
 ps = 1.0

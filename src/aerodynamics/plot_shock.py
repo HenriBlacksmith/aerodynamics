@@ -1,5 +1,4 @@
-from matplotlib.pyplot import (close, gca, rc, savefig, subplots, title,
-                               xlabel, ylabel)
+from matplotlib.pyplot import close, gca, rc, savefig, subplots, title, xlabel, ylabel
 from numpy import array, tan
 
 
@@ -23,7 +22,7 @@ def strong_shock_wave_points(sigma_strong):
 
 
 def plot_data_table(data):
-    fig, ax = subplots(1, 1)
+    _, ax = subplots(1, 1)
     rc("text", usetex=True)
     ax.axis("off")
     ax.table(cellText=data, loc="center")
